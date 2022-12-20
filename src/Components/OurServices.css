@@ -1,0 +1,68 @@
+h1, h2, h3, h4, h5, h6, p, a, ul, li {
+    margin: 0 !important;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.ourservices-section-bg {
+    display: flex;
+    justify-content: center;
+    margin-top: 104px;
+}
+
+.ourservices-section {
+    width: 1440px;
+    display: flex;
+    justify-content: center;
+    gap: 104px;
+}
+
+.ourservices-right {
+    width: 468px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ourservices-right-title-h2 {
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 700;
+}
+
+.ourservices-right-desc {
+    margin-top: 24px;
+}
+
+.ourservices-right-list {
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+}
+
+.ourservices-right-list-icon-bg {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    background-color: #CFD4ED;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ourservices-right-list-icon {
+    color: #0D28A6;
+}
+
+.ourservices-right-list-p-bg {
+    margin-left: 16px;
+}
