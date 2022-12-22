@@ -8,3 +8,120 @@ body {
     font-weight: 400;
     line-height: 20px;
 }
+
+.whyus-section-bg {
+    display: flex;
+    justify-content: center;
+    margin-top: 104px;
+}
+
+.whyus-section {
+    width: 1168px;
+    display: flex;
+    flex-direction: column;
+}
+
+.whyus-title-p {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 36px;
+}
+
+.whyus-desc {
+    margin-top: 16px;
+}
+
+.whyus-card-bg {
+    display: flex;
+    gap: 32px;
+    margin-top: 40px;
+}
+
+.whyus-card {
+    width: 268px;
+    border: 1px solid #D0D0D0;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    padding: 24px;
+}
+
+.whyus-card-icon-thumbsup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: #F9CC00;
+    color: white;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.whyus-card-icon-tag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: #FA2C5A;
+    color: white;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.whyus-card-icon-clock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: #0D28A6;
+    color: white;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.whyus-card-icon-award {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: #5CB85F;
+    color: white;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.whyus-card-title {
+    margin-top: 16px;
+}
+
+.whyus-card-title-p {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.whyus-card-desc {
+    margin-top: 16px;
+}
+
+.whyus-card-desc-p {
+    font-weight: 700;
+}

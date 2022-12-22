@@ -1,0 +1,13 @@
+.footer-section-bg {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 104px;
+    margin-bottom: 104px;
+}
+
+.footer-section {
+    width: 1440px;
+    justify-content: space-around;
+    display: flex;
+}

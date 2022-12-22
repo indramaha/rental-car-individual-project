@@ -39,6 +39,10 @@ body {
     margin-top: 24px;
 }
 
+.ourservices-right-desc-p {
+    font-weight: 700;
+}
+
 .ourservices-right-list {
     display: flex;
     align-items: center;
@@ -65,4 +69,8 @@ body {
 
 .ourservices-right-list-p-bg {
     margin-left: 16px;
+}
+
+.ourservices-right-list-p {
+    font-weight: 700;
 }
