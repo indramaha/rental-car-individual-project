@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Logo from '../Assets/logo.png'
 import './NavBar.css'
 
@@ -6,7 +7,9 @@ const NavBar = () => {
         <div className='navbar-section-bg'>
             <div className='navbar-section'>
                 <div className='navbar-left'>
-                    <img src={Logo} alt='logo'/>
+                    <Link to='/'>
+                        <img src={Logo} alt='logo'/>
+                    </Link>
                 </div>
                 <div className='navbar-right'>
                     <div>

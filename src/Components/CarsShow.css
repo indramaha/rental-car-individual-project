@@ -1,0 +1,85 @@
+.carsshow-section-bg {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 112px;
+}
+
+.carsshow-section {
+    width: 1440px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.carsshow-card {
+    width: 336px;
+    padding: 24px;
+    background-color: white;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+.carsshow-card-img-bg {
+    display: flex;
+    justify-content: center;
+    padding-top: 32;
+    padding-bottom: 32px;
+}
+
+.carsshow-card-img {
+    width: 270px;
+    height: 160px;
+    object-fit: cover;
+}
+
+.carsshow-card-name {
+    margin-top: 16px;
+}
+
+.carsshow-card-price {
+    margin-top: 8px;
+}
+
+.carsshow-card-price-p {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.carsshow-card-desc {
+    margin-top: 8px;
+}
+
+.carsshow-card-desc-p {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.carsshow-card-btn-bg {
+    margin-top: 24px;
+}
+
+.carsshow-card-btn {
+    width: 100%;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background-color: #5CB85F;
+    border: none;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+

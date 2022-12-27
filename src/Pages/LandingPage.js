@@ -9,7 +9,7 @@ const LandingPage = () => {
     return (  
         <div>
             <NavBar />
-            <Hero />
+            <Hero isBtnShow={true}/>
             <OurServices />
             <WhyUs />
             <Banner />
@@ -17,5 +17,5 @@ const LandingPage = () => {
         </div>
     );
 }
- 
+
 export default LandingPage;
