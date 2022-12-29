@@ -23,7 +23,7 @@ const SearchCarPage = () => {
     }
 
     const handlePrice = (e) => {
-        if (e.target.value == "cheap"){
+        if (e.target.value === "cheap"){
             setMinPrice(0)
             setMaxPrice(400000)
         } else if (e.target.value === "middle") {
@@ -31,10 +31,10 @@ const SearchCarPage = () => {
             setMaxPrice(600000)
         } else if (e.target.value === "expensive") {
             setMinPrice(600000)
-            setMaxPrice(0)
+            setMaxPrice(100000000)
         } else if (e.target.value === "default") {
-            setMinPrice(0)
-            setMaxPrice(0)
+            setMinPrice("")
+            setMaxPrice("")
         } else {
         }
     }

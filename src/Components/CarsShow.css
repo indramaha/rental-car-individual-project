@@ -9,6 +9,12 @@
     width: 1440px;
     display: flex;
     justify-content: center;
+}
+
+.carsshow-card-bg {
+    width: 1056px;
+    display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 24px;
 }
