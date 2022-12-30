@@ -1,0 +1,228 @@
+.cardetail-section-bg {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 104px;
+}
+
+.cardetail-section {
+    width: 1440px;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+}
+
+.cardetail-left {
+    padding: 24px;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+    height: fit-content;
+}
+
+.cardetail-left-p-bold {
+    font-weight: 700;
+}
+
+.accordion-button {
+    font-weight: 700 !important;
+}
+
+.cardetail-left-include-bg {
+    margin-top: 16px;
+}
+
+.cardetail-left-list-bg {
+    margin-top: 8px;
+}
+
+.cardetail-left-exclude-bg {
+    margin-top: 16px;
+}
+
+.cardetail-left-refund-bg {
+    margin-top: 24px;
+}
+
+.accordion-item {
+    border: none !important;
+}
+
+.accordion-header {
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    line-height: 20px !important;
+}
+
+.accordion-button {
+    padding: 0 !important;
+}
+
+.accordion-button:not(.collapsed) {
+    color: black !important;
+    background-color: white !important;
+    box-shadow: none !important; 
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: black !important;
+}
+
+.accordion-body {
+    padding: 0 !important;
+}
+
+.accordion {
+    --bs-accordion-btn-focus-border-color: none !important;
+    --bs-accordion-btn-focus-box-shadow: none !important;
+}
+
+.cardetail-left-accord {
+    width: 557px !important;
+}
+
+.cardetail-right {
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    height: fit-content;
+    width: 408px;
+}
+
+.cardetail-right-img-bg {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 32px;
+    padding-bottom: 32px;
+}
+
+.cardetail-right-img {
+    width: 270px;
+    height: 160px;
+    object-fit: cover;
+}
+
+.cardetail-right-desc-bg {
+    padding: 24px;
+}
+
+.cardetail-right-desc-name-p {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.cardetail-right-desc-category-bg {
+    display: flex;
+    margin-top: 8px;
+    align-items: center;
+    gap: 8px;
+}
+
+.cardetail-category-p {
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 14px;
+    color: #8A8A8A;
+}
+
+.cardetail-right-desc-date-bg {
+    margin-top: 16px;
+}
+
+.cardetail-right-desc-date-input-bg {
+    display: flex;
+    border: 1px solid #009C96;
+    border-radius: 2px;
+    padding: 9px 12px;
+    margin-top: 8px;
+}
+
+.react-datepicker__input-container input {
+    border: none;
+    width: 100%;
+}
+
+.react-datepicker__input-container input::placeholder {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+.react-datepicker__input-container input:focus-visible {
+    outline: none !important;
+}
+
+.react-datepicker__day--in-range {
+    background-color: #35B0A7 !important;
+    border-radius: 50% !important;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    -ms-border-radius: 50% !important;
+    -o-border-radius: 50% !important;
+}
+
+.react-datepicker__day--keyboard-selected {
+    background-color: #35B0A7 !important;
+}
+
+.react-datepicker__header  {
+    background-color: white !important;
+    border-bottom: none !important;
+}
+
+.cardetail-right-desc-date-title-p {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.cardetail-right-desc-total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+}
+
+.cardetail-right-desc-total-p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.cardetail-right-desc-total-price-p {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.cardetail-right-desc-button-bg {
+    margin-top: 24px;
+}
+
+.cardetail-right-desc-button {
+    border: none;
+    width: 100%;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: #5CB85F;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    border-radius: 2px;
+}
+
+.cardetail-right-spinner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

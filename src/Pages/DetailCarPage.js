@@ -1,7 +1,17 @@
+import CarDetail from "../Components/CarDetail";
+import FilterBox from "../Components/FilterBox";
+import Footer from "../Components/Footer";
+import Hero from "../Components/Hero";
+import NavBar from "../Components/NavBar";
+
 const DetailCarPage = () => {
     return (  
         <div>
-            <h1>detailcarpage</h1>
+            <NavBar />
+            <Hero />
+            <FilterBox />
+            <CarDetail />
+            <Footer />
         </div>
     );
 }

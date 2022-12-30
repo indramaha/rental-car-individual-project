@@ -25,7 +25,7 @@ const CarsShow = (props) => {
                                         <p className='carsshow-card-desc-p'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                                     </div>
                                     <div className='carsshow-card-btn-bg'>
-                                        <Link to={"/detail-car"}>
+                                        <Link to={`/detail-car/${item.id}`}>
                                             <button className='carsshow-card-btn'>Pilih Mobil</button>
                                         </Link>
                                     </div>

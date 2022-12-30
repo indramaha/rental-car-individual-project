@@ -7,7 +7,7 @@ const FilterBox = (props) => {
             <div className='filterbox-section'>
                 <div>
                     <div>
-                        <p>Nama Mobil</p>
+                        <p className='filterbox-title-p'>Nama Mobil</p>
                     </div>
                     <div className='filterbox-input-bg'>
                         <input type='text' placeholder='Ketik nama/tipe mobil' className='filterbox-input' onChange={props.hName}/>
@@ -15,7 +15,7 @@ const FilterBox = (props) => {
                 </div>
                 <div>
                     <div>
-                        <p>Kategori</p>
+                        <p className='filterbox-title-p'>Kategori</p>
                     </div>
                     <div className='filterbox-select-bg'>
                         <Form.Select onChange={props.hCategory}>
@@ -28,7 +28,7 @@ const FilterBox = (props) => {
                 </div>
                 <div>
                     <div>
-                        <p>Harga</p>
+                        <p className='filterbox-title-p'>Harga</p>
                     </div>
                     <div className='filterbox-select-bg'>
                         <Form.Select onChange={props.hPrice}>
@@ -41,7 +41,7 @@ const FilterBox = (props) => {
                 </div>
                 <div>
                     <div>
-                        <p>Status</p>
+                        <p className='filterbox-title-p'>Status</p>
                     </div>
                     <div className='filterbox-select-bg'>
                         <Form.Select>

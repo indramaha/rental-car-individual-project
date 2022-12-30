@@ -11,3 +11,50 @@
     justify-content: space-around;
     display: flex;
 }
+
+.footer-p-bold {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.footer-bio-location {
+    width: 268px;
+}
+
+.footer-bio-bg {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footer-nav-bg {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.footer-socmed-bg {
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.footer-socmed-icons {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    background-color: #0D28A6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.footer-logo-bg {
+    margin-top: 16px;
+}

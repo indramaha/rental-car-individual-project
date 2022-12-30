@@ -3,6 +3,7 @@ import Footer from "../Components/Footer";
 import Hero from "../Components/Hero";
 import NavBar from "../Components/NavBar";
 import OurServices from "../Components/OurServices";
+import Testimonial from "../Components/Testimonial";
 import WhyUs from "../Components/WhyUs";
 
 const LandingPage = () => {
@@ -12,6 +13,7 @@ const LandingPage = () => {
             <Hero isBtnShow={true}/>
             <OurServices />
             <WhyUs />
+            {/* <Testimonial /> */}
             <Banner />
             <Footer />
         </div>

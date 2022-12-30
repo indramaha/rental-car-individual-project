@@ -39,6 +39,13 @@
     -o-transition: 0.5s;
 }
 
+.filterbox-title-p {
+    font-family: 'Rubik', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 18px;
+}
+
 .filterbox-input-bg {
     margin-top: 8px;
 }
