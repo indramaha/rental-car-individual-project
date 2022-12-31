@@ -21,6 +21,10 @@ body {
     justify-content: space-between;
 }
 
+.hero-filterbutton-on {
+    height: 208px;
+}
+
 .hero-left {
     width: 568px;
     display: flex;

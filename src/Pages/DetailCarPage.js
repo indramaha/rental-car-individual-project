@@ -8,8 +8,8 @@ const DetailCarPage = () => {
     return (  
         <div>
             <NavBar />
-            <Hero />
-            <FilterBox />
+            <Hero onOff={true}/>
+            <FilterBox detailOff={true} onOff={true}/>
             <CarDetail />
             <Footer />
         </div>

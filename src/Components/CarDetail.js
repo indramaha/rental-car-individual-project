@@ -21,7 +21,7 @@ const CarDetail = () => {
                 setCarDetail(ress.data)
             })
             .catch((err) => console.log(err.message))
-    },[])
+    },[id])
 
     function Category () {
         const isCategory = carDetail.category
@@ -61,9 +61,15 @@ const CarDetail = () => {
 
     function PriceTotal(){
         const isPrice = carDetail.price
-        return(
-            convertToRupiah(isPrice)
-        )
+        const dateCount = Math.round((endDate - startDate) / (1000 * 60 * 60 * 24))
+        const totalPrice = isPrice * (dateCount+1)
+        if ((dateCount >= 0) && (dateCount < 7)) {
+            return convertToRupiah(totalPrice)
+        } else if (dateCount < 0) {
+            return 0
+        } else {
+            return "- (Lebih dari 7 hari)"
+        }
     }
 
     return (  
@@ -161,7 +167,7 @@ const CarDetail = () => {
                                             <p className="cardetail-right-desc-total-p">Total</p>
                                         </div>
                                         <div>
-                                            <p className="cardetail-right-desc-total-price-p"><PriceTotal /></p>
+                                            <p className="cardetail-right-desc-total-price-p">Rp <PriceTotal /></p>
                                         </div>
                                     </div>
                                     <div className="cardetail-right-desc-button-bg">

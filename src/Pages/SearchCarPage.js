@@ -13,6 +13,7 @@ const SearchCarPage = () => {
     const [category, setCategory] = useState("")
     const [minPrice, setMinPrice] = useState("")
     const [maxPrice, setMaxPrice] = useState("")
+    const [onButton, setOnButton] = useState(false)
 
     const handleName = (e) => {
         setName(e.target.value)
@@ -48,10 +49,10 @@ const SearchCarPage = () => {
             .get(`https://bootcamp-rent-cars.herokuapp.com/customer/v2/car?name=${name}&category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}&page=&pageSize=`)
             .then((ress) => {
                 setCars(ress.data.cars)
+                setOnButton(true)
             })
             .catch((err) => console.log(err.message))
     }
-    
 
     useEffect(() => {
         axios
@@ -64,8 +65,8 @@ const SearchCarPage = () => {
     return (  
         <div>
             <NavBar />
-            <Hero isBtnShow={false}/>
-            <FilterBox hName={handleName} hCategory={handleCategory} hPrice={handlePrice} buttonFilter={handleSearchButton}/>
+            <Hero isBtnShow={false} onOff={onButton}/>
+            <FilterBox hName={handleName} hCategory={handleCategory} hPrice={handlePrice} buttonFilter={handleSearchButton} onOff={onButton}/>
             <CarsShow carsData={cars}/>
             <Footer /> 
         </div>
