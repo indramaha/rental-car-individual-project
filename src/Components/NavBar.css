@@ -41,3 +41,14 @@ body {
     color: white;
     font-weight: 700 ;
 }
+
+.navbar-login-bg {
+    padding: 6px 5px;
+    box-shadow: 2px 2px 2px rgba(4, 39, 35, 0.2);
+    background-color: #D0D0D0;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}

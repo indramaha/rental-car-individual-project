@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./CarDetail.css"
 import Accordion from 'react-bootstrap/Accordion';
 import { useEffect, useState } from "react";
@@ -20,6 +20,7 @@ const CarDetail = () => {
         axios
             .get(`https://bootcamp-rent-cars.herokuapp.com/customer/car/${id}`)
             .then((ress) => {
+                console.log(ress)
                 setCarDetail(ress.data)
             })
             .catch((err) => console.log(err.message))
@@ -84,7 +85,11 @@ const CarDetail = () => {
                 </OverlayTrigger>
             ) 
         } else {
-            return <button className="cardetail-right-desc-button">Lanjutkan Pembayaran</button>
+            return(
+                <Link to={`/payment/${carDetail.id}`} >
+                    <button className="cardetail-right-desc-button">Lanjutkan Pembayaran</button>
+                </Link>
+            )
         }
     }
 

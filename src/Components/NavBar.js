@@ -14,17 +14,17 @@ const NavBar = () => {
         } else {
             setIsLogin(true)
         }
-    })
+    },[])
 
     console.log(isLogin)
 
-    const navIconLogin = (<FiUser size={18}/>)
+    const navIconLogin = (<FiUser />)
 
     const navigate = useNavigate()
 
     const handleLogOut = (() => {
         localStorage.removeItem("token")
-        navigate("/searchcar")
+        navigate("/")
     })
     return (  
         <div className='navbar-section-bg'>
@@ -50,13 +50,16 @@ const NavBar = () => {
                     <div>
                         {
                             isLogin ? (
-                                <NavDropdown
-                                    id="nav-dropdown-dark-example"
-                                    title={navIconLogin}
-                                    menuVariant="dark"
-                                >
-                                    <NavDropdown.Item onClick={handleLogOut}>Sign Out</NavDropdown.Item>
-                                </NavDropdown>
+                                <div className='navbar-login-bg'>
+                                    <NavDropdown
+                                        id="nav-dropdown-dark-example"
+                                        title={navIconLogin}
+                                        menuVariant="dark"
+                                    >
+                                        <NavDropdown.Item onClick={handleLogOut}>Sign Out</NavDropdown.Item>
+                                    </NavDropdown>
+                                </div>
+                                
                             ):(
                                 <Link to={"/customer-register"}>
                                     <button className='navbar-button-register'>Register</button>
