@@ -9,11 +9,11 @@ const FilterBox = (props) => {
     const detail = props.onOff
     const buttonOnOff = props.detailOff
     function ButtonFIlter(){
-        if (buttonOnOff == true){
+        if (buttonOnOff === true){
             return null
-        } else if (detail == true){
-            return <button className='filterbox-button' onClick={props.buttonFilter}>Edit</button>
-        } else if (detail == false){
+        } else if (detail === true){
+            return <button className='filterbox-button-edit' onClick={props.buttonFilter}>Edit</button>
+        } else if (detail === false){
             return <button className='filterbox-button' onClick={props.buttonFilter}>Cari Mobil</button>
         } else {
             return null

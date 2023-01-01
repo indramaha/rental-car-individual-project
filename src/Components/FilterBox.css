@@ -132,6 +132,18 @@
     color: white;
 }
 
+.filterbox-button-edit {
+    padding: 8px 16px;
+    border: 1px solid #0D28A6;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    background-color: white;
+    color: #0D28A6;
+}
+
 .form-select:focus {
     border: 1px solid #35B0A7 !important;
     border-radius: 2px;

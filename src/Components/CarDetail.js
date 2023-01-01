@@ -9,6 +9,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import {FiUsers, FiCalendar} from "react-icons/fi"
 import { convertToRupiah } from '../utils/function';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 
 const CarDetail = () => {
     const {id} = useParams();
@@ -55,6 +57,8 @@ const CarDetail = () => {
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
 
+    
+
     // console.log("start", startDate)
     // console.log("end", endDate)
     // console.log("hasil", endDate-startDate)
@@ -69,6 +73,18 @@ const CarDetail = () => {
             return 0
         } else {
             return "- (Lebih dari 7 hari)"
+        }
+    }
+
+    function HandleButton() {
+        if ((startDate == null) && (endDate == null)) {
+            return(
+                <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">Pilih Tanggal Sewa</Tooltip>}>
+                    <button className="cardetail-right-desc-button-disable">Lanjutkan Pembayaran</button>
+                </OverlayTrigger>
+            ) 
+        } else {
+            return <button className="cardetail-right-desc-button">Lanjutkan Pembayaran</button>
         }
     }
 
@@ -171,7 +187,7 @@ const CarDetail = () => {
                                         </div>
                                     </div>
                                     <div className="cardetail-right-desc-button-bg">
-                                        <button className="cardetail-right-desc-button">Lanjutkan Pembayaran</button>
+                                        <HandleButton />
                                     </div>
                                 </div>
                             </>

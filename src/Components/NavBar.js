@@ -1,8 +1,31 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../Assets/logo.png'
 import './NavBar.css'
+import { useEffect, useState } from 'react';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import {FiUser} from "react-icons/fi"
 
 const NavBar = () => {
+    const [isLogin, setIsLogin] = useState(false)
+    useEffect(() => {
+        const token = localStorage.getItem("token")
+        if (token === null) {
+            setIsLogin(false)
+        } else {
+            setIsLogin(true)
+        }
+    })
+
+    console.log(isLogin)
+
+    const navIconLogin = (<FiUser size={18}/>)
+
+    const navigate = useNavigate()
+
+    const handleLogOut = (() => {
+        localStorage.removeItem("token")
+        navigate("/searchcar")
+    })
     return (  
         <div className='navbar-section-bg'>
             <div className='navbar-section'>
@@ -25,7 +48,22 @@ const NavBar = () => {
                         <p>FAQ</p>
                     </div>
                     <div>
-                        <button className='navbar-button-register'>Register</button>
+                        {
+                            isLogin ? (
+                                <NavDropdown
+                                    id="nav-dropdown-dark-example"
+                                    title={navIconLogin}
+                                    menuVariant="dark"
+                                >
+                                    <NavDropdown.Item onClick={handleLogOut}>Sign Out</NavDropdown.Item>
+                                </NavDropdown>
+                            ):(
+                                <Link to={"/customer-register"}>
+                                    <button className='navbar-button-register'>Register</button>
+                                </Link>
+                            )
+                        }
+                        
                     </div>
                 </div>
             </div>
