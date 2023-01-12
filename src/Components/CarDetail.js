@@ -20,45 +20,43 @@ const CarDetail = () => {
         axios
             .get(`https://bootcamp-rent-cars.herokuapp.com/customer/car/${id}`)
             .then((ress) => {
-                console.log(ress)
+                // console.log(ress.data)
                 setCarDetail(ress.data)
             })
             .catch((err) => console.log(err.message))
     },[id])
 
-    function Category () {
-        const isCategory = carDetail.category
-        if (isCategory === "small" ){
-            return(
-                <div>
-                    <p className="cardetail-category-p">2 - 4 orang</p>
-                </div>
-            )
-        } else if (isCategory === "medium" ) {
-            return(
-                <div>
-                    <p className="cardetail-category-p">4 - 6 orang</p>
-                </div>
-            )
-        } else if (isCategory === "large" ) {
-            return(
-                <div>
-                    <p className="cardetail-category-p">6 - 8 orang</p>
-                </div>
-            )
-        } else {
-            return(
-                <div>
-                    <p>-</p>
-                </div>
-            )
-        }
-    }
+    // function Category () {
+    //     const isCategory = carDetail.category
+    //     if (isCategory === "small" ){
+    //         return(
+    //             <div>
+    //                 <p className="cardetail-category-p">2 - 4 orang</p>
+    //             </div>
+    //         )
+    //     } else if (isCategory === "medium" ) {
+    //         return(
+    //             <div>
+    //                 <p className="cardetail-category-p">4 - 6 orang</p>
+    //             </div>
+    //         )
+    //     } else if (isCategory === "large" ) {
+    //         return(
+    //             <div>
+    //                 <p className="cardetail-category-p">6 - 8 orang</p>
+    //             </div>
+    //         )
+    //     } else {
+    //         return(
+    //             <div>
+    //                 <p>-</p>
+    //             </div>
+    //         )
+    //     }
+    // }
 
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
-
-    
 
     // console.log("start", startDate)
     // console.log("end", endDate)
@@ -77,6 +75,35 @@ const CarDetail = () => {
         }
     }
 
+
+    // const handleBtnLP = () => {
+    //     const payload = {
+    //         "start_rent_at": startDate,
+    //         "finish_rent_at": endDate,
+    //         "car_id": id
+    //     }
+
+    //     const token = localStorage.getItem("token")
+    //     const config = {
+    //         headers : {
+    //             access_token : token
+    //         },
+    //     }
+
+    //     axios
+    //         .post(API.CUSTOMER_NEW_ORDER, payload, config)
+    //         .then((ress) => {
+    //             console.log(ress)
+    //             navigate("/payment")
+    //         })
+    //         .catch((err) => console.log(err.message))
+    // }
+
+    const handleBtnLp = () => {
+        localStorage.setItem("start", startDate)
+        localStorage.setItem("end", endDate)
+    }
+
     function HandleButton() {
         if ((startDate == null) && (endDate == null)) {
             return(
@@ -87,7 +114,7 @@ const CarDetail = () => {
         } else {
             return(
                 <Link to={`/payment/${carDetail.id}`} >
-                    <button className="cardetail-right-desc-button">Lanjutkan Pembayaran</button>
+                    <button onClick={handleBtnLp} className="cardetail-right-desc-button">Lanjutkan Pembayaran</button>
                 </Link>
             )
         }
@@ -160,7 +187,33 @@ const CarDetail = () => {
                                             <FiUsers size={12}/>
                                         </div>
                                         <div>
-                                            <Category />
+                                            {(() => {
+                                                if (carDetail.category === "small" ){
+                                                    return(
+                                                        <div>
+                                                            <p className="cardetail-category-p">2 - 4 orang</p>
+                                                        </div>
+                                                    )
+                                                } else if (carDetail.category === "Medium" ) {
+                                                    return(
+                                                        <div>
+                                                            <p className="cardetail-category-p">4 - 6 orang</p>
+                                                        </div>
+                                                    )
+                                                } else if (carDetail.category === "large" ) {
+                                                    return(
+                                                        <div>
+                                                            <p className="cardetail-category-p">6 - 8 orang</p>
+                                                        </div>
+                                                    )
+                                                } else {
+                                                    return(
+                                                        <div>
+                                                            <p>-</p>
+                                                        </div>
+                                                    )
+                                                }
+                                            })()}
                                         </div>
                                     </div>
                                     <div className="cardetail-right-desc-date-bg">
@@ -174,6 +227,7 @@ const CarDetail = () => {
                                                 onChange={(update) => {
                                                     setDateRange(update);
                                                 }}
+                                                dateFormat="dd MMMM yyyy"
                                                 isClearable={true}
                                                 placeholderText="Pilih tanggal mulai dan tanggal akhir sewa"
                                                 showDisabledMonthNavigation

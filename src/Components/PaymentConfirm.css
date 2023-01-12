@@ -1,0 +1,52 @@
+.paymentconfirm-section-bg {
+    display: flex;
+    justify-content: center;
+}
+
+.paymentconfirm-section {
+    width: 1440px;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 40px;
+}
+
+.paymentconfirm-left {
+    width: 605px;
+}
+
+.paymentconfirm-infor-time {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    padding: 24px;
+    align-items: center;
+}
+
+.paymentconfirm-bank-infor {
+    width: 100%;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    padding: 24px;
+    margin-top: 24px;
+}
+
+.paymentconfirm-right {
+    width: 405px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}

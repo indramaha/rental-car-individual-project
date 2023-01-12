@@ -16,7 +16,7 @@ const NavBar = () => {
         }
     },[])
 
-    console.log(isLogin)
+    // console.log(isLogin)
 
     const navIconLogin = (<FiUser />)
 

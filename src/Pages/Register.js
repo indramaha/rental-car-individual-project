@@ -8,16 +8,16 @@ import axios from "axios";
 import { API } from "../const/endpoint";
 
 const Register = () => {
-    const [name, setName] = useState("")
+    // const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [passwordShown, setPasswordShown] = useState(false)
 
     const navigate = useNavigate()
 
-    const handleName = (e) => {
-        setName(e.target.value)
-    }
+    // const handleName = (e) => {
+    //     setName(e.target.value)
+    // }
 
     const handleEmail = (e) => {
         setEmail(e.target.value)
@@ -70,7 +70,7 @@ const Register = () => {
                             <p className="register-left-form-p">Name*</p>
                         </div>
                         <div className="register-left-input-bg">
-                            <input placeholder="Nama Lengkap" type="text" className="register-left-input" onChange={handleName} required/>
+                            <input placeholder="Nama Lengkap" type="text" className="register-left-input" required/>
                         </div>
                         <div className="register-left-form-title">
                             <p className="register-left-form-p">Email*</p>
