@@ -7,7 +7,7 @@ const PaymentPage = () => {
     return (  
         <div>
             <NavBar />
-            <HeroPayment isStepOneDone={false} isStepTwoDone={false} isStepThreeDone={false} stepOneBg={true} stepTwoBg={false} stepThreeBg={false}/>
+            <HeroPayment isStepOneDone={false} isStepTwoDone={false} isStepThreeDone={false} stepOneBg={true} stepTwoBg={false} stepThreeBg={false} bank={false}/>
             <PaymentMethod />
             <Footer />
         </div>

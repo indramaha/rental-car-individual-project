@@ -22,6 +22,7 @@ const CarDetail = () => {
             .then((ress) => {
                 // console.log(ress.data)
                 setCarDetail(ress.data)
+                localStorage.removeItem("car_id")
             })
             .catch((err) => console.log(err.message))
     },[id])
@@ -260,7 +261,7 @@ const CarDetail = () => {
         </div>
     );
 }
- 
+
 export default CarDetail;
 
 //date picker link

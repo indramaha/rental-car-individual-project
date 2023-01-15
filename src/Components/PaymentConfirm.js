@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import "./PaymentConfirm.css"
-import {FiCopy} from "react-icons/fi"
+import {FiCopy, FiImage} from "react-icons/fi"
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { convertToRupiah } from "../utils/function";
+import {useDropzone} from 'react-dropzone';
 
-const PaymentConfirm = () => {
+const PaymentConfirm = (props) => {
     const {id} = useParams()
     const [order, setOrder] = useState([])
     const [totalPrice, setTotalPrice] = useState("")
@@ -14,6 +15,9 @@ const PaymentConfirm = () => {
     const [mBanking, setMBanking] = useState(false)
     const [clickBca, setClickBca] = useState(false)
     const [iBanking, setIBanking] = useState(false)
+    const [confirm, setConfirm] = useState(false)
+
+    const navigate = useNavigate()
 
     const handleCopyPrice = () => {
         navigator.clipboard.writeText(totalPrice)
@@ -40,6 +44,7 @@ const PaymentConfirm = () => {
                 setOrder(ress.data)
                 setTotalPrice(ress.data.total_price)
             })
+            return () => files.forEach(file => URL.revokeObjectURL(file.preview));
     },[id])
 
     const handleAtm = () => {
@@ -69,6 +74,60 @@ const PaymentConfirm = () => {
         setClickBca(false)
         setIBanking(true)
     }
+
+    const handleConfirm = () => {
+        setConfirm(true)
+    }
+
+    const [files, setFiles] = useState([]);
+    // console.log(files[0].path)
+    const {getRootProps, getInputProps} = useDropzone({
+        accept: {
+        'image/*': []
+        },
+        onDrop: acceptedFiles => {
+        setFiles(acceptedFiles.map(file => Object.assign(file, {
+            preview: URL.createObjectURL(file)
+        })));
+        }
+    });
+
+    const thumbs = files.map(file => (
+        
+        <div key={file.name}>
+            <div className="paymentconfirm-right-confirm-preview">
+                <img
+                src={file.preview}
+                className="image-preview"
+                alt="slip"
+                // Revoke data uri after image is loaded
+                onLoad={() => { URL.revokeObjectURL(file.preview) }}
+                />
+            </div>
+        </div>
+    ));
+
+    const handleConfirmFinish = () => {
+        const token = localStorage.getItem("token")
+
+        const config = {
+            headers: {
+                access_token: token
+            },
+        }
+
+        const formData = new FormData()
+        formData.append("slip", files[0])
+
+        axios
+            .put(`https://bootcamp-rent-cars.herokuapp.com/customer/order/${id}/slip`, formData, config)
+            .then((ress) => {
+                console.log(ress)
+                navigate(`/ticket/${id}`)
+            })
+            .catch((err) => console.log(err.message))
+    }
+
     return (
         <div className="paymentconfirm-section-bg">
             <div className="paymentconfirm-section">
@@ -92,11 +151,27 @@ const PaymentConfirm = () => {
                         </div>
                         <div className="paymentconfirm-bank-infor-profile">
                             <div className="paymentconfirm-bank-infor-profile-icon">
-                                <p>BCA</p>
+                                {(()=>{
+                                    if (localStorage.getItem("bank") === "bca"){
+                                        return<p>BCA</p>
+                                    } else if (localStorage.getItem("bank") === "bni"){
+                                        return<p>BNI</p>
+                                    } else if (localStorage.getItem("bank") === "mandiri"){
+                                        return<p>Mandiri</p>
+                                    }
+                                })()}
                             </div>
                             <div>
                                 <div className="paymentconfirm-bank-infor-profile-text">
-                                    <p>BCA Transfer</p>
+                                    {(()=>{
+                                        if (localStorage.getItem("bank") === "bca"){
+                                            return<p>BCA Transfer</p>
+                                        } else if (localStorage.getItem("bank") === "bni"){
+                                            return<p>BNI Transfer</p>
+                                        } else if (localStorage.getItem("bank") === "mandiri"){
+                                            return<p>Mandiri Transfer</p>
+                                        }
+                                    })()}
                                 </div>
                                 <div className="paymentconfirm-bank-infor-profile-text">
                                     <p>a.n Binar Car Rental</p>
@@ -136,13 +211,37 @@ const PaymentConfirm = () => {
                         </div>
                         <div className="paymentconfirm-instruct-headers-bg">
                             <div onClick={handleAtm} className={atm ? "paymentconfirm-instruct-headers-active":"paymentconfirm-instruct-headers"}>
-                                <p>ATM BCA</p>
+                                {(()=>{
+                                    if (localStorage.getItem("bank") === "bca"){
+                                        return<p>ATM BCA</p>
+                                    } else if (localStorage.getItem("bank") === "bni"){
+                                        return<p>ATM BNI</p>
+                                    } else if (localStorage.getItem("bank") === "mandiri"){
+                                        return<p>ATM Mandiri</p>
+                                    }
+                                })()}
                             </div>
                             <div onClick={handleMBanking} className={mBanking ? "paymentconfirm-instruct-headers-active":"paymentconfirm-instruct-headers"}>
-                                <p>M-BCA</p>
+                                {(()=>{
+                                    if (localStorage.getItem("bank") === "bca"){
+                                        return<p>M-BCA</p>
+                                    } else if (localStorage.getItem("bank") === "bni"){
+                                        return<p>M-BNI</p>
+                                    } else if (localStorage.getItem("bank") === "mandiri"){
+                                        return<p>Livin-Mandiri</p>
+                                    }
+                                })()}
                             </div>
                             <div onClick={handleClickBca} className={clickBca ? "paymentconfirm-instruct-headers-active":"paymentconfirm-instruct-headers"}>
-                                <p>BCA Klik</p>
+                                {(()=>{
+                                    if (localStorage.getItem("bank") === "bca"){
+                                        return<p>BCA Klik</p>
+                                    } else if (localStorage.getItem("bank") === "bni"){
+                                        return<p>BNI Tapcash</p>
+                                    } else if (localStorage.getItem("bank") === "mandiri"){
+                                        return<p>VA Mandiri</p>
+                                    }
+                                })()}
                             </div>
                             <div onClick={handleIBanking} className={iBanking ? "paymentconfirm-instruct-headers-active":"paymentconfirm-instruct-headers"}>
                                 <p>Internet Banking</p>
@@ -207,12 +306,47 @@ const PaymentConfirm = () => {
                     </div>
                 </div>
                 <div className="paymentconfirm-right">
-                    <div className="paymentconfirm-fstep">
-                        <p>Klik konfirmasi pembayaran untuk mempercepat proses pengecekan</p>
-                    </div>
-                    <div className="paymentconfirm-fstep-btn">
-                        <button>Konfirmasi Pembayaran</button>
-                    </div>
+                    {confirm ? (
+                        <div>
+                            <div className="paymentconfirm-right-confirm-bg">
+                                <div className="paymentconfirm-right-confirm-title">
+                                    <p>Konfirmasi Pembayaran</p>
+                                </div>
+                                <div>
+                                    <p>5pm</p>
+                                </div>
+                            </div>
+                            <div className="paymentconfirm-right-confirm-desc">
+                                <p>Terima kasih telah melakukan konfirmasi pembayaran. Pembayaranmu akan segera kami cek tunggu kurang lebih 10 menit untuk mendapatkan konfirmasi.</p>
+                            </div>
+                            <div>
+                                <div className="paymentconfirm-right-confirm-desc">
+                                    <p>Upload Bukti Pembayaran</p>
+                                </div>
+                                <div className="paymentconfirm-right-confirm-desc">
+                                    <p>Untuk membantu kami lebih cepat melakukan pengecekan. Kamu bisa upload bukti bayarmu</p>
+                                </div>
+                            </div>
+                            <div {...getRootProps({className: 'dropzone paymentconfirm-right-confirm-input'})}>
+                                <input {...getInputProps()} />
+                                {files.length ? null:<FiImage size={24}/>}
+                                {thumbs}
+                            </div>
+                            <div className="paymentconfirm-right-confirm-btn">
+                                {files.length ? <button onClick={handleConfirmFinish}>Konfirmasi</button>:<button>Upload</button>}
+                            </div>
+                        </div>
+                    ):(
+                        <div>
+                            <div className="paymentconfirm-fstep">
+                                <p>Klik konfirmasi pembayaran untuk mempercepat proses pengecekan</p>
+                            </div>
+                            <div className="paymentconfirm-fstep-btn">
+                                <button onClick={handleConfirm}>Konfirmasi Pembayaran</button>
+                            </div>
+                        </div>
+                    )}
+                    
                 </div>
             </div>
         </div> 

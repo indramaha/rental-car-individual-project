@@ -169,18 +169,21 @@ const PaymentMethod = () => {
         setIsBcaTrue(true)
         setIsBniTrue(false)
         setIsMandiriTrue(false)
+        localStorage.setItem("bank", "bca")
     }
 
     const handleBni = () => {
         setIsBcaTrue(false)
         setIsBniTrue(true)
         setIsMandiriTrue(false)
+        localStorage.setItem("bank", "bni")
     }
 
     const handleMandiri = () => {
         setIsBcaTrue(false)
         setIsBniTrue(false)
         setIsMandiriTrue(true)
+        localStorage.setItem("bank", "mandiri")
     }
 
     const handlePay = () => {
@@ -199,6 +202,7 @@ const PaymentMethod = () => {
         axios
             .post(API.CUSTOMER_NEW_ORDER, payload, config)
             .then((ress) => {
+                localStorage.setItem("car_id", id)
                 navigate(`/payment-confirm/${ress.data.id}`)
                 // localStorage.setItem("order-id", ress.data.id)
             })

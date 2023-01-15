@@ -1,19 +1,48 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./HeroPayment.css"
 import {FiArrowLeft, FiCheck} from "react-icons/fi"
 
 const HeroPayment = (props) => {
     const {id} = useParams()
+
+    const navigate = useNavigate()
+
+    const handleBack = () => {
+        if(props.isStepOneDone === false){
+            navigate(`/detail-car/${id}`)
+            localStorage.removeItem("start")
+            localStorage.removeItem("end")
+            localStorage.removeItem("bank")
+        } else if (props.isStepOneDone === true){
+            navigate(`/payment/${localStorage.getItem("car_id")}`)
+        }
+        
+    }
+
+    const bank = localStorage.getItem("bank")
     return (  
         <div className="heropayment-section-bg">
             <div className={props.stepTwoBg ? "heropayment-section-two":"heropayment-section"}>
                 <div className="heropayment-left" >
                     <div>
-                        <FiArrowLeft size={24}/>
+                        <FiArrowLeft size={24} onClick={handleBack}/>
                     </div>
                     <div>
                         <div className="heropayment-left-title">
-                            <p>Pembayaran</p>
+                            {(()=>{
+                                if (props.bank === false){
+                                    return<p>Pembayaran</p>
+                                } else if (props.bank === true && bank === "bca"){
+                                    return<p>BCA Transfer</p>
+                                } else if (props.bank === true && bank === "bni"){
+                                    return<p>BNI Transfer</p>
+                                } else if (props.bank === true && bank === "mandiri"){
+                                    return<p>Mandiri Transfer</p>
+                                } else if (props.isTicketShow === true) {
+                                    return<p>Tiket</p>
+                                }
+                            })()}
+                            
                         </div>
                         {
                             props.isStepOneDone ? (
@@ -62,5 +91,5 @@ const HeroPayment = (props) => {
         </div>
     );
 }
- 
+
 export default HeroPayment;

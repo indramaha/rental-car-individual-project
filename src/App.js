@@ -8,6 +8,7 @@ import Register from './Pages/Register';
 import PaymentPage from './Pages/PaymentPage';
 import ProtectedRoute from './hoc/ProtectedRoute';
 import PaymentConfirmPage from './Pages/PaymentConfirmPage';
+import Ticket from './Pages/Ticket';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
       <Route element={<ProtectedRoute />}>
         <Route path='/payment/:id' element={<PaymentPage />} />
         <Route path='/payment-confirm/:id' element={<PaymentConfirmPage />} />
+        <Route path='/ticket/:id' element={<Ticket />} />
       </Route>
     </Routes>
   );
