@@ -1,16 +1,17 @@
 import Footer from "../Components/Footer";
 import HeroPayment from "../Components/HeroPayment";
 import NavBar from "../Components/NavBar";
+import Ticket from "../Components/Ticket";
 
-const Ticket = () => {
+const TicketPage = () => {
     return (  
         <div>
             <NavBar />
             <HeroPayment isStepOneDone={true} isStepTwoDone={true} isStepThreeDone={false} stepOneBg={true} stepTwoBg={true} stepThreeBg={true} isTicketShow={true}/>
-            <h1>Ticket</h1>
+            <Ticket />
             <Footer />
         </div>
     );
 }
  
-export default Ticket;
+export default TicketPage;

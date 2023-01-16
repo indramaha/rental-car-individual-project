@@ -1,0 +1,84 @@
+.ticket-section-bg {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.ticket-section {
+    display: flex;
+    width: 1440px;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+
+.ticket-chceck {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    background-color: #5CB85F;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    color: white;
+}
+
+.ticket-success {
+    margin-top: 16px;
+}
+
+.ticket-success p {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.ticket-instruct {
+    margin-top: 16px;
+}
+
+.ticket-instruct p {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #8A8A8A;
+}
+
+.ticket-pdf {
+    margin-top: 40px;
+    width: 605px;
+    padding: 24px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+.ticket-pdf-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ticket-pdf-invoice p {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.ticket-pdf-btn button {
+    padding: 8px 12px;
+    border: 1px solid #0D28A6;
+    border-radius: 2px;
+    color: #0D28A6;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background-color: white;
+}

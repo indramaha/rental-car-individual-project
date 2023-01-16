@@ -13,10 +13,11 @@ const HeroPayment = (props) => {
             localStorage.removeItem("start")
             localStorage.removeItem("end")
             localStorage.removeItem("bank")
+        } else if (props.isTicketShow === true) {
+            navigate("/searchcar")
         } else if (props.isStepOneDone === true){
             navigate(`/payment/${localStorage.getItem("car_id")}`)
         }
-        
     }
 
     const bank = localStorage.getItem("bank")
