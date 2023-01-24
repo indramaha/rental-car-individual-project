@@ -2,37 +2,34 @@ import LogoLogReg from "../Assets/LogoLogReg.png"
 import LpDekstop from "../Assets/Landing page - Desktop.png"
 import "./Register.css"
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
 import {FiEye, FiEyeOff} from "react-icons/fi"
 import axios from "axios";
 import { API } from "../const/endpoint";
+import { useDispatch, useSelector } from "react-redux";
+import { inputEmail, inputPassword, passwordShow } from "../redux/action/inputAuthAction";
 
 const Register = () => {
-    // const [name, setName] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [passwordShown, setPasswordShown] = useState(false)
+    const state = useSelector((rootReducers) => rootReducers)
+    console.log(state)
 
     const navigate = useNavigate()
 
-    // const handleName = (e) => {
-    //     setName(e.target.value)
-    // }
+    const dispatch = useDispatch()
 
     const handleEmail = (e) => {
-        setEmail(e.target.value)
+        dispatch(inputEmail(e))
     }
 
     const handlePassword = (e) => {
-        setPassword(e.target.value)
+        dispatch(inputPassword(e))
     }
 
     const handlePasswordShown = () => {
-        setPasswordShown(!passwordShown)
+        dispatch(passwordShow(!state.inputAuth.isPwdShow))
     }
 
     function EyeIcons(){
-        if (passwordShown === true) {
+        if (state.inputAuth.isPwdShow === true) {
             return <FiEye className="fieye"/>
         } else {
             return <FiEyeOff className="fieyeoff"/>
@@ -41,8 +38,8 @@ const Register = () => {
 
     const handleRegisBtn = () => {
         const payload = {
-            "email": email,
-            "password": password,
+            "email": state.inputAuth.email,
+            "password": state.inputAuth.password,
             "role": "Admin"
         }
 
@@ -82,7 +79,7 @@ const Register = () => {
                             <p className="register-left-form-p">Create Password*</p>
                         </div>
                         <div className="register-left-input-password-bg">
-                            <input placeholder="6+ karakter" type={passwordShown ? "text":"password"} className="register-left-input-password" onChange={handlePassword} required/>
+                            <input placeholder="6+ karakter" type={state.inputAuth.isPwdShow ? "text":"password"} className="register-left-input-password" onChange={handlePassword} required/>
                             <i onClick={handlePasswordShown}>
                                 <EyeIcons />
                             </i>

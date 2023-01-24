@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Logo from '../Assets/logo.png'
 import './NavBar.css'
 import { useEffect, useState } from 'react';
@@ -20,11 +20,9 @@ const NavBar = () => {
 
     const navIconLogin = (<FiUser />)
 
-    const navigate = useNavigate()
-
     const handleLogOut = (() => {
         localStorage.removeItem("token")
-        navigate("/")
+        window.location.reload(false)
     })
     return (  
         <div className='navbar-section-bg'>
@@ -66,7 +64,6 @@ const NavBar = () => {
                                 </Link>
                             )
                         }
-                        
                     </div>
                 </div>
             </div>

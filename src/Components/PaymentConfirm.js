@@ -93,7 +93,6 @@ const PaymentConfirm = (props) => {
     });
 
     const thumbs = files.map(file => (
-        
         <div key={file.name}>
             <div className="paymentconfirm-right-confirm-preview">
                 <img
