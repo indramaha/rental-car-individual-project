@@ -23,6 +23,7 @@
 .heropayment-left {
     display: flex;
     gap: 16px;
+    align-items: center;
 }
 
 .heropayment-left-title {

@@ -3,6 +3,7 @@ import "./PaymentMethod.css"
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import moment from "moment/moment";
+import 'moment/locale/id'
 import {FiUsers, FiChevronDown, FiCheck} from "react-icons/fi"
 import Accordion from 'react-bootstrap/Accordion';
 import { useAccordionButton } from 'react-bootstrap/AccordionButton';
@@ -248,7 +249,7 @@ const PaymentMethod = () => {
                                 <p>Tanggal Mulai Sewa</p>
                             </div>
                             <div className="paymentmethod-head-order-content-desc">
-                                <p>{dateStart.format("LL")}</p>
+                                <p>{dateStart.format('LL')}</p>
                             </div>
                         </div>
                         <div className="paymentmethod-head-order-content-area">

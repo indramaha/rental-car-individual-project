@@ -90,6 +90,7 @@ line-height: 20px;
 .paymentmethod-bank-option-bg {
     display: flex;
     gap: 16px;
+    cursor: pointer;
 }
 
 .paymentmethod-bank-option-icon {
@@ -210,6 +211,7 @@ hr {
 
 .paymentmethod-detailorder-total {
     margin-top: 47px;
+    cursor: pointer;
 }
 
 .paymentmethod-detailorder-total .card {
