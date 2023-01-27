@@ -109,18 +109,18 @@ const CarDetail = () => {
     }
 
     function HandleButton() {
-        if ((startDate == null) && (endDate == null)) {
-            return(
-                <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">Pilih Tanggal Sewa</Tooltip>}>
-                    <button className="cardetail-right-desc-button-disable">Lanjutkan Pembayaran</button>
-                </OverlayTrigger>
-            ) 
-        } else {
+        if ((startDate != null) && (endDate != null)) {
             return(
                 <Link to={`/payment/${carDetail.id}`} >
                     <button onClick={handleBtnLp} className="cardetail-right-desc-button">Lanjutkan Pembayaran</button>
                 </Link>
             )
+        } else  {
+            return(
+                <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">Pilih Tanggal Sewa</Tooltip>}>
+                    <button className="cardetail-right-desc-button-disable">Lanjutkan Pembayaran</button>
+                </OverlayTrigger>
+            ) 
         }
     }
 

@@ -1,35 +1,37 @@
 import LogoLogReg from "../Assets/LogoLogReg.png"
 import LpDekstop from "../Assets/Landing page - Desktop.png"
 import "./Register.css"
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {FiEye, FiEyeOff} from "react-icons/fi"
-import axios from "axios";
-import { API } from "../const/endpoint";
-import { useDispatch, useSelector } from "react-redux";
-import { inputEmail, inputPassword, passwordShow } from "../redux/action/inputAuthAction";
+// import axios from "axios";
+// import { API } from "../const/endpoint";
+import { useDispatch } from "react-redux";
+import { regisAction } from "../redux/action/regisAction";
+import { useState } from "react";
 
 const Register = () => {
-    const state = useSelector((rootReducers) => rootReducers)
-    console.log(state)
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [isPwdShow, setIsPwdShow] = useState(false)
 
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
     const dispatch = useDispatch()
 
     const handleEmail = (e) => {
-        dispatch(inputEmail(e))
+        setEmail(e.target.value)
     }
 
     const handlePassword = (e) => {
-        dispatch(inputPassword(e))
+        setPassword(e.target.value)
     }
 
     const handlePasswordShown = () => {
-        dispatch(passwordShow(!state.inputAuth.isPwdShow))
+        setIsPwdShow(!isPwdShow)
     }
 
     function EyeIcons(){
-        if (state.inputAuth.isPwdShow === true) {
+        if (isPwdShow === true) {
             return <FiEye className="fieye"/>
         } else {
             return <FiEyeOff className="fieyeoff"/>
@@ -38,18 +40,20 @@ const Register = () => {
 
     const handleRegisBtn = () => {
         const payload = {
-            "email": state.inputAuth.email,
-            "password": state.inputAuth.password,
+            "email": email,
+            "password": password,
             "role": "Admin"
         }
 
-        axios
-            .post(API.CUSTOMER_REGIS, payload)
-            .then((ress) => {
-                console.log(ress)
-                navigate('/customer-login')
-            })
-            .catch((err) => console.log(err.message))
+        dispatch(regisAction(payload))
+
+        // axios
+        //     .post(API.CUSTOMER_REGIS, payload)
+        //     .then((ress) => {
+        //         console.log(ress)
+        //         navigate('/customer-login')
+        //     })
+        //     .catch((err) => console.log(err.message))
     }
 
     return (  
@@ -79,7 +83,7 @@ const Register = () => {
                             <p className="register-left-form-p">Create Password*</p>
                         </div>
                         <div className="register-left-input-password-bg">
-                            <input placeholder="6+ karakter" type={state.inputAuth.isPwdShow ? "text":"password"} className="register-left-input-password" onChange={handlePassword} required/>
+                            <input placeholder="6+ karakter" type={isPwdShow ? "text":"password"} className="register-left-input-password" onChange={handlePassword} required/>
                             <i onClick={handlePasswordShown}>
                                 <EyeIcons />
                             </i>
