@@ -1,22 +1,23 @@
 import LogoLogReg from "../Assets/LogoLogReg.png"
 import LpDekstop from "../Assets/Landing page - Desktop.png"
 import "./Register.css"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {FiEye, FiEyeOff} from "react-icons/fi"
-// import axios from "axios";
-// import { API } from "../const/endpoint";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { regisAction } from "../redux/action/regisAction";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Register = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [isPwdShow, setIsPwdShow] = useState(false)
 
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
 
     const dispatch = useDispatch()
+
+    const state = useSelector(rootReducers => rootReducers)
+    // console.log(state);
 
     const handleEmail = (e) => {
         setEmail(e.target.value)
@@ -44,17 +45,20 @@ const Register = () => {
             "password": password,
             "role": "Admin"
         }
-
         dispatch(regisAction(payload))
-
-        // axios
-        //     .post(API.CUSTOMER_REGIS, payload)
-        //     .then((ress) => {
-        //         console.log(ress)
-        //         navigate('/customer-login')
-        //     })
-        //     .catch((err) => console.log(err.message))
     }
+
+    const handleRedirect = () => {
+        //if condition can wrap with setTimeout to delay respon
+        if(state.regis.message === "Created"){
+            navigate("/customer-login")
+        }
+    }
+
+    useEffect(() => {
+        handleRedirect()
+        // eslint-disable-next-line
+    },[state.regis.message]) //this array to check state change, and process function inside useEffect
 
     return (  
         <div className="register-section-bg">

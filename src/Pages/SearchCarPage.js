@@ -3,17 +3,28 @@ import FilterBox from "../Components/FilterBox";
 import Footer from "../Components/Footer";
 import Hero from "../Components/Hero";
 import NavBar from "../Components/NavBar";
-import axios from "axios";
-import { API } from "../const/endpoint";
 import CarsShow from "../Components/CarsShow";
+import { useDispatch, useSelector } from "react-redux";
+import { handleFilterBtn, handleGetAllCar } from "../redux/action/carAction";
 
 const SearchCarPage = () => {
-    const [cars, setCars] = useState([])
+    const state = useSelector(rootReducers => rootReducers)
+    // console.log(state)
     const [name, setName] = useState("")
     const [category, setCategory] = useState("")
     const [minPrice, setMinPrice] = useState("")
     const [maxPrice, setMaxPrice] = useState("")
-    const [onButton, setOnButton] = useState(false)
+
+    const dispatch = useDispatch()
+
+    const onHandleAllCars = () => {
+        dispatch(handleGetAllCar())
+    }
+
+    useEffect(() => {
+        onHandleAllCars()
+        // eslint-disable-next-line
+    },[])
 
     const handleName = (e) => {
         setName(e.target.value)
@@ -39,35 +50,18 @@ const SearchCarPage = () => {
         } else {
         }
     }
-    // console.log("name", name)
-    // console.log("category", category)
-    // console.log("minprice", minPrice)
-    // console.log("maxprice", maxPrice)
 
-    const handleSearchButton = (e) => {
-        axios
-            .get(`https://bootcamp-rent-cars.herokuapp.com/customer/v2/car?name=${name}&category=${category}&minPrice=${minPrice}&maxPrice=${maxPrice}&page=&pageSize=`)
-            .then((ress) => {
-                setCars(ress.data.cars)
-                setOnButton(true)
-            })
-            .catch((err) => console.log(err.message))
+    const onHandleFilterBtn = () => {
+        dispatch(handleFilterBtn(name, category, minPrice, maxPrice))
     }
 
-    useEffect(() => {
-        axios
-            .get(API.CARS_SHOW)
-            .then((ress) => {
-                setCars(ress.data.cars)
-            })
-            .catch((err) => console.log(err.message))
-    },[])
+
     return (  
         <div>
             <NavBar />
-            <Hero isBtnShow={false} onOff={onButton}/>
-            <FilterBox hName={handleName} hCategory={handleCategory} hPrice={handlePrice} buttonFilter={handleSearchButton} onOff={onButton}/>
-            <CarsShow carsData={cars}/>
+            <Hero isBtnShow={false} onOff={state.car.filterBtn}/>
+            <FilterBox hName={handleName} hCategory={handleCategory} hPrice={handlePrice} buttonFilter={onHandleFilterBtn} onOff={state.car.filterBtn}/>
+            <CarsShow carsData={state.car.carList}/>
             <Footer /> 
         </div>
     );

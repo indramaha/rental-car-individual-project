@@ -2,7 +2,6 @@ import { Link, useParams } from "react-router-dom";
 import "./CarDetail.css"
 import Accordion from 'react-bootstrap/Accordion';
 import { useEffect, useState } from "react";
-import axios from "axios";
 import Spinner from 'react-bootstrap/Spinner';
 import React from "react";
 import DatePicker from "react-datepicker";
@@ -11,63 +10,32 @@ import {FiUsers, FiCalendar} from "react-icons/fi"
 import { convertToRupiah } from '../utils/function';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+import { handleCarById } from "../redux/action/carAction";
+import { useDispatch, useSelector } from "react-redux";
 
 const CarDetail = () => {
-    const {id} = useParams();
-    const [carDetail, setCarDetail] = useState([]);
-
-    useEffect(() => {
-        axios
-            .get(`https://bootcamp-rent-cars.herokuapp.com/customer/car/${id}`)
-            .then((ress) => {
-                // console.log(ress.data)
-                setCarDetail(ress.data)
-                localStorage.removeItem("car_id")
-                localStorage.removeItem("start")
-                localStorage.removeItem("end")
-                localStorage.removeItem("bank")
-            })
-            .catch((err) => console.log(err.message))
-    },[id])
-
-    // function Category () {
-    //     const isCategory = carDetail.category
-    //     if (isCategory === "small" ){
-    //         return(
-    //             <div>
-    //                 <p className="cardetail-category-p">2 - 4 orang</p>
-    //             </div>
-    //         )
-    //     } else if (isCategory === "medium" ) {
-    //         return(
-    //             <div>
-    //                 <p className="cardetail-category-p">4 - 6 orang</p>
-    //             </div>
-    //         )
-    //     } else if (isCategory === "large" ) {
-    //         return(
-    //             <div>
-    //                 <p className="cardetail-category-p">6 - 8 orang</p>
-    //             </div>
-    //         )
-    //     } else {
-    //         return(
-    //             <div>
-    //                 <p>-</p>
-    //             </div>
-    //         )
-    //     }
-    // }
-
+    const state = useSelector(rootReducers => rootReducers)
+    // console.log(state.car.carById);
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
+    const {id} = useParams();
+    const dispatch = useDispatch()
 
-    // console.log("start", startDate)
-    // console.log("end", endDate)
-    // console.log("hasil", endDate-startDate)
+    const onHandleCarById = () => {
+        dispatch(handleCarById(id)) 
+    }
+
+    useEffect(() => {
+        localStorage.removeItem("car_id")
+        localStorage.removeItem("start")
+        localStorage.removeItem("end")
+        localStorage.removeItem("bank")
+        onHandleCarById()
+        // eslint-disable-next-line
+    },[])
 
     function PriceTotal(){
-        const isPrice = carDetail.price
+        const isPrice = state.car.carById.price
         const dateCount = Math.round((endDate - startDate) / (1000 * 60 * 60 * 24))
         const totalPrice = isPrice * (dateCount+1)
         if ((dateCount >= 0) && (dateCount < 7)) {
@@ -79,30 +47,6 @@ const CarDetail = () => {
         }
     }
 
-
-    // const handleBtnLP = () => {
-    //     const payload = {
-    //         "start_rent_at": startDate,
-    //         "finish_rent_at": endDate,
-    //         "car_id": id
-    //     }
-
-    //     const token = localStorage.getItem("token")
-    //     const config = {
-    //         headers : {
-    //             access_token : token
-    //         },
-    //     }
-
-    //     axios
-    //         .post(API.CUSTOMER_NEW_ORDER, payload, config)
-    //         .then((ress) => {
-    //             console.log(ress)
-    //             navigate("/payment")
-    //         })
-    //         .catch((err) => console.log(err.message))
-    // }
-
     const handleBtnLp = () => {
         localStorage.setItem("start", startDate)
         localStorage.setItem("end", endDate)
@@ -111,7 +55,7 @@ const CarDetail = () => {
     function HandleButton() {
         if ((startDate != null) && (endDate != null)) {
             return(
-                <Link to={`/payment/${carDetail.id}`} >
+                <Link to={`/payment/${state.car.carById.id}`} >
                     <button onClick={handleBtnLp} className="cardetail-right-desc-button">Lanjutkan Pembayaran</button>
                 </Link>
             )
@@ -177,14 +121,14 @@ const CarDetail = () => {
                 </div>
                 <div className="cardetail-right">
                     {
-                        Object.entries(carDetail).length ? (
+                        Object.entries(state.car.carById).length ? (
                             <>
                                 <div className="cardetail-right-img-bg">
-                                    <img src={carDetail.image} alt={carDetail.name} className="cardetail-right-img"/>
+                                    <img src={state.car.carById.image} alt={state.car.carById.name} className="cardetail-right-img"/>
                                 </div>
                                 <div className="cardetail-right-desc-bg">
                                     <div>
-                                        <p className="cardetail-right-desc-name-p">{carDetail.name}</p>
+                                        <p className="cardetail-right-desc-name-p">{state.car.carById.name}</p>
                                     </div>
                                     <div className="cardetail-right-desc-category-bg">
                                         <div>
@@ -192,19 +136,19 @@ const CarDetail = () => {
                                         </div>
                                         <div>
                                             {(() => {
-                                                if (carDetail.category === "small" ){
+                                                if (state.car.carById.category === "small" ){
                                                     return(
                                                         <div>
                                                             <p className="cardetail-category-p">2 - 4 orang</p>
                                                         </div>
                                                     )
-                                                } else if (carDetail.category === "Medium" ) {
+                                                } else if (state.car.carById.category === "Medium" ) {
                                                     return(
                                                         <div>
                                                             <p className="cardetail-category-p">4 - 6 orang</p>
                                                         </div>
                                                     )
-                                                } else if (carDetail.category === "large" ) {
+                                                } else if (state.car.carById.category === "large" ) {
                                                     return(
                                                         <div>
                                                             <p className="cardetail-category-p">6 - 8 orang</p>

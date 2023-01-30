@@ -3,16 +3,31 @@ import LpDekstop from "../Assets/Landing page - Desktop.png"
 import { Link, useNavigate } from "react-router-dom"
 import "./Login.css"
 import {FiEye, FiEyeOff} from "react-icons/fi"
-import { useState } from "react";
-import axios from "axios"
-import { API } from "../const/endpoint"
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux"
+import { handleLogin } from "../redux/action/authAction"
 
 const Login = () => {
     const [passwordShown, setPasswordShown] = useState(false)
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const state = useSelector(rootReducers => rootReducers)
+    // console.log(state);
 
     const navigate = useNavigate()
+
+    const dispatch = useDispatch()
+
+    const handleRedirect = () => {
+        if(state.login.message === "Created"){
+            navigate("/searchcar")
+        }
+    }
+
+    useEffect(() => {
+        handleRedirect()
+        // eslint-disable-next-line
+    },[state.login.message])
 
     const handlePasswordShown = () => {
         setPasswordShown(!passwordShown)
@@ -31,14 +46,7 @@ const Login = () => {
         "email": email,
         "password": password
         }
-
-        axios
-            .post(API.CUSTOMER_LOGIN, payload)
-            .then((ress) => {
-                console.log(ress)
-                localStorage.setItem("token", ress.data.access_token);
-                navigate("/searchcar")
-            })
+        dispatch(handleLogin(payload))
     }
 
     function EyeIcons(){
