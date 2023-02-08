@@ -1,14 +1,24 @@
 .paymentmethod-section-bg {
     display: flex;
     justify-content: center;
+    /* position: absolute; */
 }
 
 .paymentmethod-section {
     width: 1440px;
 }
 
-.paymentmethod-head-order {
+.paymentmethod-head-order-bg {
+    display: flex;
+    justify-content: center;
     position: absolute;
+    top: 230px;
+    width: 100%;
+    left: 0;
+}
+
+.paymentmethod-head-order {
+    /* position: absolute;  */
     top: 230px;
     left: 435px;
     padding: 24px;
@@ -336,20 +346,4 @@ hr {
     font-weight: 700;
     font-size: 14px;
     line-height: 20px;
-}
-
-@media only screen and (max-width: 1440px) {
-    .paymentmethod-head-order {
-        position: absolute;
-        top: 230px;
-        left: 195px;
-        padding: 24px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
-        border-radius: 8px;
-        -webkit-border-radius: 8px;
-        -moz-border-radius: 8px;
-        -ms-border-radius: 8px;
-        -o-border-radius: 8px;
-        background-color: white;
-    }
 }

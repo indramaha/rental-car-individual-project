@@ -213,55 +213,58 @@ const PaymentMethod = () => {
     return (  
         <div className="paymentmethod-section-bg">
             <div className="paymentmethod-section">
-                <div className="paymentmethod-head-order">
-                    <div className="paymentmethod-head-order-title">
-                        <p>Detail Pesananmu</p>
-                    </div>
-                    <div className="paymentmethod-head-order-content">
-                        <div className="paymentmethod-head-order-content-area">
-                            <div className="paymentmethod-head-order-content-title">
-                                <p>Nama/Tipe Mobil</p>
-                            </div>
-                            <div className="paymentmethod-head-order-content-desc">
-                                <p>{car.name}</p>
-                            </div>
+                <div className="paymentmethod-head-order-bg">
+                    <div className="paymentmethod-head-order">
+                        <div className="paymentmethod-head-order-title">
+                            <p>Detail Pesananmu</p>
                         </div>
-                        <div className="paymentmethod-head-order-content-area">
-                            <div className="paymentmethod-head-order-content-title">
-                                <p>Kategori</p>
+                        <div className="paymentmethod-head-order-content">
+                            <div className="paymentmethod-head-order-content-area">
+                                <div className="paymentmethod-head-order-content-title">
+                                    <p>Nama/Tipe Mobil</p>
+                                </div>
+                                <div className="paymentmethod-head-order-content-desc">
+                                    <p>{car.name}</p>
+                                </div>
                             </div>
-                            <div className="paymentmethod-head-order-content-desc">
-                                {(() => {
-                                    if (car.category === "small") {
-                                        return <p>2 - 4 orang</p>
-                                    } else if (car.category === "Medium") {
-                                        return <p>4 - 6 orang</p>
-                                    } else if (car.category === "large") {
-                                        return <p>6 - 8 orang</p>
-                                    } else {
-                                        return <p>-</p>
-                                    }
-                                })()}
+                            <div className="paymentmethod-head-order-content-area">
+                                <div className="paymentmethod-head-order-content-title">
+                                    <p>Kategori</p>
+                                </div>
+                                <div className="paymentmethod-head-order-content-desc">
+                                    {(() => {
+                                        if (car.category === "small") {
+                                            return <p>2 - 4 orang</p>
+                                        } else if (car.category === "Medium") {
+                                            return <p>4 - 6 orang</p>
+                                        } else if (car.category === "large") {
+                                            return <p>6 - 8 orang</p>
+                                        } else {
+                                            return <p>-</p>
+                                        }
+                                    })()}
+                                </div>
                             </div>
-                        </div>
-                        <div className="paymentmethod-head-order-content-area">
-                            <div className="paymentmethod-head-order-content-title">
-                                <p>Tanggal Mulai Sewa</p>
+                            <div className="paymentmethod-head-order-content-area">
+                                <div className="paymentmethod-head-order-content-title">
+                                    <p>Tanggal Mulai Sewa</p>
+                                </div>
+                                <div className="paymentmethod-head-order-content-desc">
+                                    <p>{dateStart.format('LL')}</p>
+                                </div>
                             </div>
-                            <div className="paymentmethod-head-order-content-desc">
-                                <p>{dateStart.format('LL')}</p>
-                            </div>
-                        </div>
-                        <div className="paymentmethod-head-order-content-area">
-                            <div className="paymentmethod-head-order-content-title">
-                                <p>Tanggal Akhir Sewa</p>
-                            </div>
-                            <div className="paymentmethod-head-order-content-desc">
-                                <p>{dateEnd.format("LL")}</p>
+                            <div className="paymentmethod-head-order-content-area">
+                                <div className="paymentmethod-head-order-content-title">
+                                    <p>Tanggal Akhir Sewa</p>
+                                </div>
+                                <div className="paymentmethod-head-order-content-desc">
+                                    <p>{dateEnd.format("LL")}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                
                 <div className="paymentmethod-bank-detailorder">
                     <div className="paymentmethod-bank-bg">
                         <div className="paymentmethod-bank-title">

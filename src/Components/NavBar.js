@@ -1,29 +1,20 @@
 import { Link } from 'react-router-dom';
 import Logo from '../Assets/logo.png'
 import './NavBar.css'
-import { useEffect, useState } from 'react';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import {FiUser} from "react-icons/fi"
+import { useDispatch, useSelector } from 'react-redux';
+import { handleLogOut } from '../redux/action/authAction';
 
 const NavBar = () => {
-    const [isLogin, setIsLogin] = useState(false)
-    useEffect(() => {
-        const token = localStorage.getItem("token")
-        if (token === null) {
-            setIsLogin(false)
-        } else {
-            setIsLogin(true)
-        }
-    },[])
-
-    // console.log(isLogin)
-
+    const state = useSelector(rootReducers => rootReducers)
+    // console.log(state.login.message)
+    const dispatch = useDispatch()
     const navIconLogin = (<FiUser />)
 
-    const handleLogOut = (() => {
-        localStorage.removeItem("token")
-        window.location.reload(false)
-    })
+    const onHandleLogOut = () => {
+        dispatch(handleLogOut())
+    }
     return (  
         <div className='navbar-section-bg'>
             <div className='navbar-section'>
@@ -47,14 +38,14 @@ const NavBar = () => {
                     </div>
                     <div>
                         {
-                            isLogin ? (
+                            state.login.message === "Created" ? (
                                 <div className='navbar-login-bg'>
                                     <NavDropdown
                                         id="nav-dropdown-dark-example"
                                         title={navIconLogin}
                                         menuVariant="dark"
                                     >
-                                        <NavDropdown.Item onClick={handleLogOut}>Sign Out</NavDropdown.Item>
+                                        <NavDropdown.Item onClick={onHandleLogOut}>Sign Out</NavDropdown.Item>
                                     </NavDropdown>
                                 </div>
                                 

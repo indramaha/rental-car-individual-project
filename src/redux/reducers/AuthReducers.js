@@ -9,6 +9,11 @@ export const authReducers = (state = authState, action) => {
                 ...authState,
                 message: action.payload,
             }
+        case "LOGOUT":
+            return {
+                ...authState,
+                message: action.payload,
+            }
         default:
             return state;
     }
