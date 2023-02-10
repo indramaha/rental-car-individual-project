@@ -20,6 +20,9 @@ const CarDetail = () => {
     const [startDate, endDate] = dateRange;
     const {id} = useParams();
     const dispatch = useDispatch()
+    const isPrice = state.car.carById.price
+    const dateCount = Math.round((endDate - startDate) / (1000 * 60 * 60 * 24))
+    const totalPrice = isPrice * (dateCount +1)
 
     const onHandleCarById = () => {
         dispatch(handleCarById(id)) 
@@ -33,11 +36,9 @@ const CarDetail = () => {
         onHandleCarById()
         // eslint-disable-next-line
     },[])
-
+    
     function PriceTotal(){
-        const isPrice = state.car.carById.price
-        const dateCount = Math.round((endDate - startDate) / (1000 * 60 * 60 * 24))
-        const totalPrice = isPrice * (dateCount+1)
+        
         if ((dateCount >= 0) && (dateCount < 7)) {
             return convertToRupiah(totalPrice)
         } else if (dateCount < 0) {
@@ -52,14 +53,22 @@ const CarDetail = () => {
         localStorage.setItem("end", endDate)
     }
 
+    // console.log(dateCount)
+
     function HandleButton() {
-        if ((startDate != null) && (endDate != null)) {
+        if ((startDate != null) && (endDate != null) && (dateCount <= 7)) {
             return(
                 <Link to={`/payment/${state.car.carById.id}`} >
                     <button onClick={handleBtnLp} className="cardetail-right-desc-button">Lanjutkan Pembayaran</button>
                 </Link>
             )
-        } else  {
+        } else if (dateCount > 7) {
+            return(
+                <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">Pilih Tanggal Sewa</Tooltip>}>
+                    <button className="cardetail-right-desc-button-disable">Lanjutkan Pembayaran</button>
+                </OverlayTrigger>
+            ) 
+        } else {
             return(
                 <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">Pilih Tanggal Sewa</Tooltip>}>
                     <button className="cardetail-right-desc-button-disable">Lanjutkan Pembayaran</button>

@@ -32,12 +32,13 @@ const PaymentMethod = () => {
     const dateStart = moment(localStorage.getItem("start"))
     const dateEnd = moment(localStorage.getItem("end"))
 
-    const longDate = Math.round((dateEnd - dateStart) / (1000 * 60 * 60 * 24))
+    const longDate = (Math.round((dateEnd - dateStart) / (1000 * 60 * 60 * 24))) + 1
+    // console.log(longDate)
 
     function PriceTotal(){
         const isPrice = car.price
         const dateCount = Math.round((dateEnd - dateStart) / (1000 * 60 * 60 * 24))
-        const totalPrice = isPrice * (dateCount+1)
+        const totalPrice = isPrice * (dateCount + 1)
         return <p>Rp {convertToRupiah(totalPrice)}</p>
     }
 

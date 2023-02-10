@@ -41,6 +41,7 @@ const PaymentConfirm = (props) => {
         axios
             .get(`https://bootcamp-rent-cars.herokuapp.com/customer/order/${id}`, config)
             .then((ress) => {
+                console.log(ress)
                 setOrder(ress.data)
                 setTotalPrice(ress.data.total_price)
             })
